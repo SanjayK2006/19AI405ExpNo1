@@ -42,9 +42,9 @@
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
 <h3>PROGRAM:</h3>
 
-import random
-class ForestEnvironment:
-    def __init__(self, size=4, fire_count=2):
+    import random
+    class ForestEnvironment:
+       def __init__(self, size=4, fire_count=2):
         self.size = size
         self.grid = [["Tree" for _ in range(size)] for _ in range(size)]
         for _ in range(fire_count):
