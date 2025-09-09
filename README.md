@@ -21,11 +21,11 @@
     <td><strong>Sensors</strong></td>
   </tr>
     <tr>
-    <td><strong>Medicine prescribing agent</strong></td>
-    <td><strong>Treating unhealthy, agent movement</strong></td>
-     <td><strong>Rooms, Patient</strong></td>
-    <td><strong>Medicine, Treatment</strong></td>
-    <td><strong>Location, Temperature of patient</strong></td>
+    <td><strong>The Firefighting Drone Agent</strong></td>
+    <td><strong>The agent’s performance depends on maximizing fires extinguished while minimizing random moves.</strong></td>
+     <td><strong>Cities,Forest,Mountains Regions</strong></td>
+    <td><strong>Putoff the Fire</strong></td>
+    <td><strong>Location, Temperature of Environment</strong></td>
   </tr>
 </table>
 <hr>
@@ -63,7 +63,7 @@ class ForestEnvironment:
             return True
         return False
 
-class FirefightingDrone:
+    class FirefightingDrone:
     def __init__(self):
         self.score = 0
 
@@ -87,7 +87,7 @@ class FirefightingDrone:
             self.score -= 1
             return f"Drone moved {move} to {environment.drone_position}"
 
-def run_firefighting_simulation(steps=8):
+     def run_firefighting_simulation(steps=8):
     env = ForestEnvironment()
     agent = FirefightingDrone()
 
@@ -99,7 +99,7 @@ def run_firefighting_simulation(steps=8):
         print(row)
     print("Performance Score:", agent.score)
 
-run_firefighting_simulation(steps=8)
+     run_firefighting_simulation(steps=8)
 
 <h3>OUTPUT:</h3>
 <img width="295" height="248" alt="Screenshot 2025-09-09 132431" src="https://github.com/user-attachments/assets/68f760e1-cf82-4a77-a607-b0a618b0c657" />
