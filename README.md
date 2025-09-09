@@ -1,6 +1,6 @@
 <h1>ExpNo 1 :Developing AI Agent with PEAS Description</h1>
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: SANJAY K</h3>
+<h3>Register Number: 212223220094</h3>
 
 
 <h3>AIM:</h3>
@@ -40,3 +40,70 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+<h3>PROGRAM:</h3>
+
+import random
+class ForestEnvironment:
+    def __init__(self, size=4, fire_count=2):
+        self.size = size
+        self.grid = [["Tree" for _ in range(size)] for _ in range(size)]
+        for _ in range(fire_count):
+            x, y = random.randint(0, size-1), random.randint(0, size-1)
+            self.grid[y][x] = "Fire"
+        self.drone_position = [0, 0]
+
+    def get_cell_status(self):
+        x, y = self.drone_position
+        return self.grid[y][x]
+
+    def extinguish_fire(self):
+        x, y = self.drone_position
+        if self.grid[y][x] == "Fire":
+            self.grid[y][x] = "Tree"
+            return True
+        return False
+
+class FirefightingDrone:
+    def __init__(self):
+        self.score = 0
+
+    def perceive_and_act(self, environment):
+        state = environment.get_cell_status()
+        if state == "Fire":
+            environment.extinguish_fire()
+            self.score += 30
+            return f"Drone at {environment.drone_position}: Fire -> Extinguished"
+        else:
+            move = random.choice(["North", "South", "East", "West"])
+            x, y = environment.drone_position
+            if move == "North" and y > 0:
+                environment.drone_position[1] -= 1
+            elif move == "South" and y < environment.size-1:
+                environment.drone_position[1] += 1
+            elif move == "East" and x < environment.size-1:
+                environment.drone_position[0] += 1
+            elif move == "West" and x > 0:
+                environment.drone_position[0] -= 1
+            self.score -= 1
+            return f"Drone moved {move} to {environment.drone_position}"
+
+def run_firefighting_simulation(steps=8):
+    env = ForestEnvironment()
+    agent = FirefightingDrone()
+
+    for step in range(steps):
+        print(agent.perceive_and_act(env))
+
+    print("\nFinal Forest State:")
+    for row in env.grid:
+        print(row)
+    print("Performance Score:", agent.score)
+
+run_firefighting_simulation(steps=8)
+
+<h3>OUTPUT:</h3>
+<img width="295" height="248" alt="Screenshot 2025-09-09 132431" src="https://github.com/user-attachments/assets/68f760e1-cf82-4a77-a607-b0a618b0c657" />
+
+<h3>RESULT:</h3>
+<p>Thus the above given program is executed successfully.</p>
+
